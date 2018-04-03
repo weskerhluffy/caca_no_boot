@@ -12,13 +12,17 @@ import org.springframework.web.context.ContextLoaderListener;
 
 public class WebaAppInit implements WebApplicationInitializer {
 
+	// XXX:
+	// https://samerabdelkafi.wordpress.com/2014/08/03/spring-mvc-full-java-based-config/
 	private static final Logger logger = LoggerFactory.getLogger(WebaAppInit.class);
+
 	public void onStartup(ServletContext container) {
 		logger.error("todos lo nombran");
 		// Create the 'root' Spring application context
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 		// rootContext.register(ServiceConfig.class, JPAConfig.class,
 		// SecurityConfig.class);
+		rootContext.register(JPutoConfig.class);
 
 		// Manage the lifecycle of the root application context
 		container.addListener(new ContextLoaderListener(rootContext));

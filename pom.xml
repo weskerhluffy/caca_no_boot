@@ -7,6 +7,12 @@
 	<name>weba</name>
 	<packaging>war</packaging>
 	<description>noboot</description>
+
+	<properties>
+		<jetty.version>9.4.9.v20180320</jetty.version>
+	</properties>
+
+	<!-- XXX: https://stackoverflow.com/questions/39799178/send-maven-output-to-console-and-log-file-using-pom -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -52,6 +58,30 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>2.0.5.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>1.0.2.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.16.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.4.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -61,6 +91,19 @@
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+				</configuration>
+			</plugin>
+			<!-- XXX: https://stackoverflow.com/questions/27737918/no-plugin-found-for-prefix-jetty-in-the-current-project -->
+			<!-- XXX: https://github.com/bkielczewski/example-spring-mvc-jetty/blob/master/pom.xml -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
 			</plugin>
 		</plugins>
 	</build>
