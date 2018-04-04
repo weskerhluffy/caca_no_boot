@@ -5,8 +5,10 @@ import javax.servlet.ServletRegistration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.context.ContextLoaderListener;
 
@@ -22,10 +24,13 @@ public class WebaAppInit implements WebApplicationInitializer {
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 		// rootContext.register(ServiceConfig.class, JPAConfig.class,
 		// SecurityConfig.class);
-		rootContext.register(JPutoConfig.class);
+		rootContext.register(JPutoConfig.class, SecuCacaConfig.class);
 
 		// Manage the lifecycle of the root application context
 		container.addListener(new ContextLoaderListener(rootContext));
+		DelegatingFilterProxy filterProxy = new DelegatingFilterProxy();
+		filterProxy.setTargetBeanName(AbstractSecurityWebApplicationInitializer.DEFAULT_FILTER_NAME);
+		container.addFilter("myFilter", filterProxy).addMappingForUrlPatterns(null, true, "/*");
 
 		// Create the dispatcher servlet's Spring application context
 		AnnotationConfigWebApplicationContext dispatcherServlet = new AnnotationConfigWebApplicationContext();

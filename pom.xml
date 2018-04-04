@@ -10,6 +10,7 @@
 
 	<properties>
 		<jetty.version>9.4.9.v20180320</jetty.version>
+		<spring.security.version>5.0.3.RELEASE</spring.security.version>
 	</properties>
 
 	<!-- XXX: https://stackoverflow.com/questions/39799178/send-maven-output-to-console-and-log-file-using-pom -->
@@ -81,6 +82,25 @@
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>2.4.0</version>
+		</dependency>
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
+		<!-- Spring Security JSP Taglib -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

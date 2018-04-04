@@ -12,7 +12,7 @@ insert into users (first_name, family_name, login, password, e_mail, phone, lang
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('user11Name', 'user11Family', 'user11', 'user11', 'user11@maycompany.com', '0033 1 23 45 67 89', 'en', true);
 
 insert into authority (name) values ('admin');
-insert into authority (name) values ('technical user');
+insert into authority (name) values ('technical_user');
 insert into authority (name) values ('user');
 
 insert into users_authority (id_user, id_authority) values (1, 1);
