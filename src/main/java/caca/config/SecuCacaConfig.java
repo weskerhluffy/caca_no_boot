@@ -22,6 +22,7 @@ public class SecuCacaConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
 
+	// XXX: http://www.mkyong.com/spring-security/spring-security-form-login-using-database/
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		logger.error("pero q mierdas");

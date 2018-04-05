@@ -2,10 +2,14 @@ package caca.controlo;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -42,8 +46,11 @@ public class UserController {
 	/**
 	 * Rest web service
 	 */
+	// @RequestMapping(value = "/usersList", method = RequestMethod.GET, produces =
+	// "application/json")
 	@RequestMapping(value = "/usersList", method = RequestMethod.GET)
 	public @ResponseBody List<User> getUsersRest() {
+
 		/*
 		 * User[] combinedPersonObjs = { new User(20L, "uno", "unop", "unoe"), new
 		 * User(21L, "dos", "dosp", "dose") };
@@ -51,6 +58,18 @@ public class UserController {
 		 * return Arrays.asList(combinedPersonObjs);
 		 */
 		return userService.findAll();
+	}
+
+	@RequestMapping(value = "/user1", method = RequestMethod.GET)
+	public @ResponseBody User getUserRest() {
+
+		/*
+		 * User[] combinedPersonObjs = { new User(20L, "uno", "unop", "unoe"), new
+		 * User(21L, "dos", "dosp", "dose") };
+		 * 
+		 * return Arrays.asList(combinedPersonObjs);
+		 */
+		return userService.findOne(1L);
 	}
 
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)

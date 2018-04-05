@@ -35,6 +35,13 @@ public class WebaAppInit implements WebApplicationInitializer {
 		// Manage the lifecycle of the root application context
 		container.addListener(new ContextLoaderListener(rootContext));
 
+		
+		// XXX: http://leaks.wanari.com/2017/11/28/how-to-make-custom-usernamepasswordauthenticationfilter-with-spring-security/
+		// XXX: http://anilkc.me/understanding-spring-security-filter-chain/
+		// XXX: https://www.logicbig.com/tutorials/spring-framework/spring-security/spring-security-components-and-configuration.html
+		// XXX: http://codehustler.org/blog/spring-security-tutorial-form-login-java-config/
+		// XXX: https://stackoverflow.com/questions/26676782/when-use-abstractannotationconfigdispatcherservletinitializer-and-webapplication
+		// XXX: https://stackoverflow.com/questions/32592931/how-to-use-delegatingfilterproxy-in-java-config
 		// XXX: https://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/delegating-filter-proxy.html
 		// XXX: https://stackoverflow.com/questions/32592931/how-to-use-delegatingfilterproxy-in-java-config
 		// XXX: https://dzone.com/articles/what-does-spring-delegatingfilterproxy-do

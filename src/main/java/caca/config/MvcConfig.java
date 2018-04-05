@@ -7,12 +7,17 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @EnableWebMvc
@@ -35,10 +40,9 @@ public class MvcConfig implements WebMvcConfigurer {
 	}
 
 	/*
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
-	*/
+	 * public void configureDefaultServletHandling(DefaultServletHandlerConfigurer
+	 * configurer) { configurer.enable(); }
+	 */
 
 	@Bean
 	public InternalResourceViewResolver jspViewResolver() {
@@ -59,5 +63,14 @@ public class MvcConfig implements WebMvcConfigurer {
 		resource.setBasename("classpath:messages");
 		resource.setDefaultEncoding("UTF-8");
 		return resource;
+	}
+
+	// XXX:
+	// http://www.programming-free.com/2014/01/spring-mvc-40-restful-web-services.html
+	@Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
+		builder.indentOutput(true);
+		converters.add(new MappingJackson2HttpMessageConverter(builder.build()));
 	}
 }
