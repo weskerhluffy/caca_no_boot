@@ -11,7 +11,7 @@ phone varchar(50),
 language char(2),
 id_picture int,
 login varchar(50) NOT NULL UNIQUE,
-password varchar(50),
+password varchar(255),
 burth_date Date,
 enabled boolean);
 

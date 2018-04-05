@@ -1,7 +1,9 @@
 package caca.config;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
+import org.hsqldb.util.DatabaseManagerSwing;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -49,5 +51,13 @@ public class JPutoConfig {
 	@Bean
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
+	}
+
+	// XXX:
+	// https://www.mkyong.com/spring/spring-view-content-of-hsqldb-embedded-database/
+	// default username : sa, password : ''
+	@PostConstruct
+	public void getDbManager() {
+		DatabaseManagerSwing.main(new String[] { "--url", "jdbc:hsqldb:mem:myDb", "--user", "sa", "--password", "" });
 	}
 }

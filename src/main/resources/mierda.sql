@@ -1,4 +1,4 @@
-insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('adminName', 'adminFamily', 'admin', 'admin', 'admin@maycompany.com', '0033 1 23 45 67 89', 'en', true);
+insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('adminName', 'adminFamily', 'admin', '$2a$10$pxqM69qW70qZhmUYY15VK.RbT.gmd43oPms5EZ1sxesXHNT0CLf6W', 'admin@maycompany.com', '0033 1 23 45 67 89', 'en', true);
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('user1Name', 'user1Family', 'user1', 'user1', 'user1@maycompany.com', '0033 1 23 45 67 89', 'fr', true);
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('user2Name', 'user2Family', 'user2', 'user2', 'user2@maycompany.com', '0033 1 23 45 67 89', 'en', true);
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('user3Name', 'user3Family', 'user3', 'user3', 'user3@maycompany.com', '0033 1 23 45 67 89', 'en', true);
@@ -12,7 +12,7 @@ insert into users (first_name, family_name, login, password, e_mail, phone, lang
 insert into users (first_name, family_name, login, password, e_mail, phone, language, enabled) values ('user11Name', 'user11Family', 'user11', 'user11', 'user11@maycompany.com', '0033 1 23 45 67 89', 'en', true);
 
 insert into authority (name) values ('admin');
-insert into authority (name) values ('technical_user');
+insert into authority (name) values ('technical user');
 insert into authority (name) values ('user');
 
 insert into users_authority (id_user, id_authority) values (1, 1);
